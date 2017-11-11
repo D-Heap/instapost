@@ -1,0 +1,27 @@
+/**
+ * All of the CSS for your admin-specific functionality should be
+ * included in this file.
+ */
+
+div[data-name="instagram_post"]{
+    display: none;
+}
+
+.insta-image{
+    float: left;
+    width: 50%;
+    margin-right: 30px;
+    padding: 12px 0;
+}
+
+.insta-image img{
+    max-height: 250px;
+}
+
+.insta-title{
+    float: left;
+    width: 25%;
+    padding: 12px 0;
+    font-size: 16px;
+    line-height: 23px;
+}
