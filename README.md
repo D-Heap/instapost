@@ -13,7 +13,7 @@ This plugin relies on the brilliant [Advanced Custom Fields](https://www.advance
 
 ## Installation
 
-- Download and copy the `insta-post` directory to `wp-content/plugins`
+- Download and copy the `insta-posts` directory to `wp-content/plugins`
 - Activate the plugin
 - Import the ACF JSON Group or copy the file to `acf-json` in your theme - 
 For more information see [ACF Local JSON](https://www.advancedcustomfields.com/resources/local-json/)
