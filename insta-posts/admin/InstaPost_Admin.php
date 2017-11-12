@@ -96,45 +96,15 @@ class InstaPost_Admin {
 		 * class.
 		 */
 
-		//wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/plugin-name-admin.js', array( 'jquery' ), $this->version, false );
-
 		wp_enqueue_script( 'instagram-js', plugin_dir_url( __FILE__ ) . 'js/insta-post-admin.js', array(), '1.0.0', true );
 		wp_localize_script( 'instagram-js', 'ajax_params', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
 
 
 	}
 
-	public function my_acf_json_save_point( $path ) {
-    
-	    // update path
-	    $path = get_stylesheet_directory() . '/core/acf-json';
-	    
-	    
-	    // return
-	    return $path;
-	    
-	}
-
-	public function my_acf_json_load_point( $paths ) {
-    
-	    // remove original path (optional)
-	    unset($paths[0]);
-	    
-	    
-	    // append path
-	    $paths[] = get_stylesheet_directory() . '/core/acf-json';
-	    
-	    
-	    // return
-	    return $paths;
-	    
-	}
-
 	public function get_insta_post_action() {
 	    
 	    $insta_post_url = sprintf('https://api.instagram.com/oembed/?url=%s', $_POST['instapost']);
-
-	    //echo $insta_post_url;
 
 	    $curl = curl_init();
 	    $options = array(
@@ -149,10 +119,12 @@ class InstaPost_Admin {
 
 	    $json = json_decode($response);
 
+	    // Get datetime from embed code
 	    $datetime = preg_match_all('/datetime=\\"(.*)\\"/', $json->html, $matches);
 	    $json->datetime = $matches[1][0];
 
 
+	    // Add links to mentions and hashtags
 	    $tags = preg_match_all('/((#|@)(?:\[[^\]]+\]|\S+))/', $json->title, $matches);
 
 	    foreach ($matches[0] as $key => $match) {

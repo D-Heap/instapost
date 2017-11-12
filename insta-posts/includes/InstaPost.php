@@ -157,9 +157,6 @@ class InstaPost {
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 
-		$this->loader->add_filter('acf/settings/save_json', $plugin_admin, 'my_acf_json_save_point');
-		$this->loader->add_filter('acf/settings/load_json', $plugin_admin, 'my_acf_json_load_point');
-
 		$this->loader->add_action('wp_ajax_get_insta_post', $plugin_admin, 'get_insta_post_action' ); 
 		$this->loader->add_action('wp_ajax_nopriv_get_insta_post', $plugin_admin, 'get_insta_post_action' ); 
 
